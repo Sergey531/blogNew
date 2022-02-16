@@ -1,7 +1,7 @@
 package kinoCMS.controllers;
 
-import kinoCMS.database.repository.IUsersCrudRepository;
 import kinoCMS.database.DAO.UsersDAOJDBC;
+import kinoCMS.service.TestUsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +17,22 @@ public class UsersController {
 
     private final UsersDAOJDBC usersDAOServiceJDBC;
 
-    private final IUsersCrudRepository usersCrudRepository;
+//    private final IUsersCrudRepository usersCrudRepository;
+
+    private final TestUsersDataService testUsersDataService;
 
     @Autowired
-    public UsersController(UsersDAOJDBC usersDAOServiceJDBC, IUsersCrudRepository usersCrudRepository){
+    public UsersController(UsersDAOJDBC usersDAOServiceJDBC, TestUsersDataService testUsersDataService){
         this.usersDAOServiceJDBC = usersDAOServiceJDBC;
-        this.usersCrudRepository = usersCrudRepository;
+
+//        this.usersCrudRepository = usersCrudRepository;
+        this.testUsersDataService = testUsersDataService;
     }
 
     @GetMapping()
     public String returnAllUsers(Model model) throws SQLException {
-        model.addAttribute("users", usersDAOServiceJDBC.selectUsers());
+        model.addAttribute("users", testUsersDataService.getAll());
+        System.out.println(testUsersDataService.getAll());
         return "users";
     }
 
@@ -35,7 +40,8 @@ public class UsersController {
 
     @GetMapping("/{id}")
     public String returnUserByID(@PathVariable("id") int id, Model model) throws SQLException {
-        model.addAttribute("user", usersDAOServiceJDBC.selectUsersWhereID(id));
+//        model.addAttribute("user", usersDAOServiceJDBC.selectUsersWhereID(id));
+//        model.addAttribute("user", testUsersDataService.getAll());
         return "byID";
     }
 }

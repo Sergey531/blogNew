@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class TestUsersDataService {
+public class TestUsersDataService implements TestUsersServiceInterface{
 
     @Autowired
     private IUsersCrudRepository usersCrudRepository;

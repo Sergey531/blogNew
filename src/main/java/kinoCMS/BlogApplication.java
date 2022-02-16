@@ -14,10 +14,7 @@ public class BlogApplication {
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		SpringApplication.run(BlogApplication.class, args);
-//		UsersDAOServiceJDBC usersServiceJDBC = new UsersDAOServiceJDBC();
-//		usersServiceJDBC.addUser("Sergey", "surname", "nickname", "Email", "adress", "12345", 111111111, "rus", "male", "+3804564564564", "Odessa", "12345");
-		TestUsersDataService testUsersDataService = new TestUsersDataService();
-		testUsersDataService.getAll();
+
 
 	}
 
